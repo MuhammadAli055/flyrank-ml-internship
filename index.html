@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Opportunity Scoring with Search Intelligence — Muhammad Ali</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.75;color:#111827;background:#F9FAFB}
+a{color:#1E3A8A;text-decoration:none}
+a:hover{text-decoration:underline}
+.header{background:#1E3A8A;color:#fff;padding:3rem 2rem 2.5rem}
+.header-inner{max-width:800px;margin:0 auto}
+.tag{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#0EA5E9;font-weight:600;margin-bottom:0.75rem}
+h1{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;line-height:1.2;color:#fff;margin-bottom:1rem}
+.meta{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.8}
+.abstract{background:#EFF6FF;border-left:3px solid #0EA5E9;padding:1.25rem 1.5rem;margin:2rem 0;border-radius:0 8px 8px 0}
+.abstract strong{font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#1E3A8A;display:block;margin-bottom:0.5rem}
+main{max-width:800px;margin:0 auto;padding:2.5rem 2rem}
+h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:#1E3A8A;margin:2.5rem 0 1rem;padding-bottom:0.4rem;border-bottom:2px solid #EFF6FF}
+h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:#374151;margin:1.5rem 0 0.5rem}
+p{margin-bottom:1rem;color:#374151}
+ul,ol{margin:0.5rem 0 1rem 1.5rem;color:#374151}
+li{margin-bottom:0.35rem}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1.5rem 0}
+.metric-card{background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:1rem;text-align:center}
+.metric-val{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:#1E3A8A}
+.metric-label{font-size:12px;color:#6B7280;margin-top:4px}
+.metric-sub{font-size:11px;color:#9CA3AF}
+table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:14px}
+th{background:#1E3A8A;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:600;padding:10px 14px;text-align:left;font-size:13px}
+td{padding:9px 14px;border-bottom:1px solid #E2E8F0;color:#374151}
+tr:nth-child(even) td{background:#F8FAFC}
+tr.best td{background:#EFF6FF;font-weight:500}
+tr.best td:first-child{color:#1E3A8A;font-weight:700}
+.figure{margin:1.75rem 0;background:#fff;border:1px solid #E2E8F0;border-radius:10px;overflow:hidden}
+.figure img{width:100%;display:block}
+.figure figcaption{font-size:12px;color:#6B7280;padding:0.6rem 1rem;border-top:1px solid #E2E8F0;font-style:italic}
+.callout{background:#FFF7ED;border-left:3px solid #F59E0B;padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1.25rem 0;font-size:14px;color:#92400E}
+.safe{background:#F0FDF4;border-left:3px solid #22C55E;padding:1rem 1.25rem;border-radius:0 8px 8px 0;margin:1.25rem 0;font-size:14px;color:#166534}
+.action-table th{background:#374151}
+.footer{background:#111827;color:rgba(255,255,255,0.6);padding:2rem;text-align:center;font-size:13px;margin-top:3rem}
+.footer a{color:#0EA5E9}
+.pill{display:inline-block;background:#EFF6FF;color:#1E3A8A;font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;margin:2px}
+@media(max-width:600px){h1{font-size:1.4rem}.metrics-grid{grid-template-columns:1fr 1fr}main{padding:1.5rem 1rem}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <p class="tag">FlyRank AI · ML Internship · Lane 2</p>
+    <h1>Content Opportunity Scoring with Search Intelligence</h1>
+    <p class="meta">
+      Muhammad Ali · Business Data Analytics, COMSATS University Islamabad<br>
+      FlyRank AI ML Internship · July–September 2026<br>
+      Data: FlyRank/internship-warehouse · March 2026 · Client-holdout validation<br>
+      Repo: <a href="https://github.com/MuhammadAli055/flyrank-ml-internship" style="color:#0EA5E9">github.com/MuhammadAli055/flyrank-ml-internship</a>
+    </p>
+  </div>
+</div>
+
+<main>
+
+<div class="abstract">
+  <strong>Abstract</strong>
+  Content teams managing large websites cannot manually review thousands of pages every week — they need a data-driven system to tell them where to focus first. This project asks: which content pages should be prioritised for review based on observable search and engagement signals? Using March 2026 data from the FlyRank search intelligence warehouse (78.8 million daily performance records across 519,606 content items), I built a binary classification and ranking pipeline using Logistic Regression, Decision Tree, and Random Forest models, validated on clients the model never saw during training. The Random Forest observed a Precision@50 of <!-- FILL YOUR NUMBER --> and ROC-AUC of <!-- FILL YOUR NUMBER --> on the client-holdout test set, compared to Precision@50 of <!-- FILL YOUR NUMBER --> for the hand-written baseline rule — a directional improvement suggesting that learned signal combinations surface review candidates more efficiently than a fixed rule on this data slice.
+</div>
+
+<div class="metrics-grid">
+  <div class="metric-card">
+    <div class="metric-val">78.8M</div>
+    <div class="metric-label">Daily search records</div>
+    <div class="metric-sub">March 2026 warehouse</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-val"><!-- FILL --></div>
+    <div class="metric-label">RF Precision@50</div>
+    <div class="metric-sub">vs <!-- FILL --> baseline</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-val"><!-- FILL --></div>
+    <div class="metric-label">ROC-AUC</div>
+    <div class="metric-sub">Client-holdout test</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-val"><!-- FILL -->%</div>
+    <div class="metric-label">Base rate</div>
+    <div class="metric-sub">Declining pages</div>
+  </div>
+</div>
+
+<h2>1. Problem Framing</h2>
+
+<p>A content team managing a large website faces a prioritisation problem: with hundreds or thousands of pages and limited weekly review capacity, which pages deserve attention first? Without a system, reviewers either work through pages arbitrarily or rely on instinct — both approaches waste time on pages that are fine while missing pages that are silently losing search visibility.</p>
+
+<p>This project builds a ranked content action queue: a list of pages ordered by urgency, with a reason code explaining why each page was flagged and a suggested action. The queue is a decision-support tool, not an automation system. It tells reviewers where to look; human judgment determines what to do.</p>
+
+<h3>Unit of analysis</h3>
+<p>One content page, aggregated over one calendar month. Each row in the feature frame represents a single page with its monthly search and engagement summary.</p>
+
+<h3>Output</h3>
+<p>A score from 0 to 100, a reason code (e.g. <code>low_ctr_visible_page</code>), and an action label (e.g. <code>review_title_and_meta</code>), one per page, sorted by score descending.</p>
+
+<h3>Cost of a wrong call</h3>
+<ul>
+  <li><strong>False positive:</strong> a reviewer opens a page that needed no action — wasted capacity</li>
+  <li><strong>False negative:</strong> a genuinely declining page is ranked too low and ignored — silent traffic loss</li>
+</ul>
+
+<h3>Why data and ML help here</h3>
+<p>A fixed rule checks one or two conditions at a time. A page may have acceptable impressions, an acceptable position, and an acceptable CTR — each fine in isolation — but the combination of all three being near their thresholds simultaneously signals a weak candidate that the rule misses. A learned model finds these interaction patterns across all features at once, without requiring a human to guess the weights.</p>
+
+<h2>2. Data</h2>
+
+<p><strong>Source:</strong> FlyRank/internship-warehouse on Hugging Face (gated release). Build id: <code>flyrank_pseudonymized_warehouse_release_v20260703</code>. All identifiers are pseudonymized hash IDs. No client names, domains, raw URLs, or raw queries appear anywhere in this work.</p>
+
+<h3>Tables used</h3>
+<ul>
+  <li><strong>fact_content_daily_performance</strong> — 78,835,655 rows, grain: one row per report_date × client × content item, date range 2025-01-27 to 2026-06-30</li>
+  <li>Aggregated to monthly grain (March 2026) for feature engineering</li>
+</ul>
+
+<h3>Development month: March 2026</h3>
+<p>The final month (June 2026) is the natural outcome window for any future-looking label — using it for development would conflate feature and target windows. March 2026 is mid-panel: enough history, safely separated from the sealed test month.</p>
+
+<h3>Features used (observable signals only)</h3>
+<table>
+  <tr><th>Feature</th><th>Source column</th><th>What it measures</th></tr>
+  <tr><td>impressions_monthly</td><td>SUM(gsc_impressions)</td><td>Total times the page appeared in search results</td></tr>
+  <tr><td>avg_position</td><td>AVG(gsc_avg_position)</td><td>Average ranking position across all queries</td></tr>
+  <tr><td>ctr</td><td>SUM(gsc_clicks)/SUM(gsc_impressions)</td><td>Fraction of impressions that resulted in a click</td></tr>
+  <tr><td>sessions_monthly</td><td>SUM(sessions_organic) where ga4_data_available IS TRUE</td><td>Confirmed GA4 organic sessions</td></tr>
+  <tr><td>days_with_impressions</td><td>COUNT(days where impressions > 0)</td><td>Consistency signal — not a one-day spike</td></tr>
+</table>
+
+<h3>Deliberately excluded</h3>
+<ul>
+  <li><strong>impressions_first_half / impressions_second_half</strong> — direct components of the proxy label (hard leakage — confirmed in ML-04 leakage experiment)</li>
+  <li><strong>Product flags</strong> (health_score, priority_score, action_type) — not in the pseudonymized release by design</li>
+  <li><strong>Pages with zero impressions</strong> — no search visibility signal; not worth reviewer time</li>
+</ul>
+
+<h3>Availability filter</h3>
+<p>Rows without confirmed GA4 tracking were excluded from session-based features using the <code>ga4_data_available IS TRUE</code> filter. Without this filter, missing tracking would be silently treated as zero traffic — a dangerous confound.</p>
+
+<div class="safe">
+  <strong>Data safety confirmation:</strong> No client names, domains, URLs, raw queries, or content titles appear in any output, figure, or this paper. All identifiers are pseudonymized. This paper contains only aggregated metrics and hash IDs.
+</div>
+
+<h2>3. Methodology</h2>
+
+<h3>Proxy label definition</h3>
+<p><code>is_declining_label = 1</code> if <code>(impressions_second_half / impressions_first_half) &lt; 0.8</code>, else 0. A page is labeled declining if its impressions in the second half of March dropped more than 20% compared to the first half. This is a proxy — a within-month comparison, not a true future-window label. Its honest limitations are named in Section 5.</p>
+
+<h3>Baseline rule (ML-07)</h3>
+<p>A hand-written scoring rule that flags pages meeting three conditions simultaneously:</p>
+<ul>
+  <li>impressions_monthly ≥ 500 (visible enough to matter)</li>
+  <li>0 &lt; avg_position ≤ 20 (ranked on Google pages 1 or 2)</li>
+  <li>ctr &lt; 0.005 (below 0.5% — underperforming for its rank)</li>
+</ul>
+<p>Score formula: <code>0.60 × visibility_component + 0.40 × position_quality_component</code>. The baseline is the honest comparison point — every model must beat it to justify its complexity.</p>
+
+<h3>Models trained</h3>
+<ul>
+  <li><strong>Logistic Regression</strong> — linear decision boundary, scaled features, max_iter=1000</li>
+  <li><strong>Decision Tree</strong> — max_depth=6, min_samples_leaf=50 (constrained to prevent memorisation)</li>
+  <li><strong>Random Forest</strong> — 200 trees, max_depth=10, min_samples_leaf=30, random_state=42</li>
+</ul>
+
+<h3>Validation design: client-holdout</h3>
+<p>20% of clients were held out entirely from training (random_state=42). The model was trained on the remaining 80% and tested only on clients it had never seen. This is a more conservative design than a random page split — pages from the same client share patterns the model could memorize, so mixing clients across train and test inflates results. Client-holdout tests genuine generalization to new content portfolios.</p>
+
+<h3>Primary metric: Precision@50</h3>
+<p>Of the top 50 pages the model recommends first, how many are genuinely declining? This matches real reviewer capacity — a team reviews 20–50 pages per week, not thousands. Generic accuracy is not reported as the primary metric because it can be gamed by predicting the majority class. Precision@K measures what a reviewer actually experiences.</p>
+
+<h3>Leakage audit (ML-09)</h3>
+<p>All features were audited before modeling. Hard leaks (impressions_first_half, impressions_second_half — direct inputs to the label formula) were confirmed excluded in ML-04. Soft overlaps (monthly aggregates computed from the same month as the label) were named and accepted as the honest limitation of a within-month proxy label. No product flags entered the feature set.</p>
+
+<h2>4. Results</h2>
+
+<div class="figure">
+  <img src="work/figures/model_comparison.png" alt="Model vs baseline comparison — Precision@50 and ROC-AUC">
+  <figcaption>Figure 1: Precision@50 (left) and ROC-AUC (right) for all methods on the client-holdout test set. The red dashed line shows the base rate. All numbers are observed on test clients not seen during training.</figcaption>
+</div>
+
+<table>
+  <tr><th>Method</th><th>Precision@20</th><th>Precision@50</th><th>ROC-AUC</th><th>Avg Precision</th></tr>
+  <tr><td>Baseline rule (ML-07)</td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td></tr>
+  <tr><td>Logistic Regression</td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td></tr>
+  <tr><td>Decision Tree</td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td></tr>
+  <tr class="best"><td>Random Forest ✓</td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td></tr>
+</table>
+
+<p><em>Base rate (majority class): <!-- FILL -->%. All Precision@K values should be read against this base rate, not against a naive 50% expectation. AUC and lift over baseline are the honest discrimination numbers.</em></p>
+
+<div class="figure">
+  <img src="work/figures/feature_importance.png" alt="Permutation feature importance">
+  <figcaption>Figure 2: Permutation importance on the test set (10 repeats). A feature's importance is the observed decrease in ROC-AUC when its values are randomly shuffled — measuring how much the model relies on each signal.</figcaption>
+</div>
+
+<div class="figure">
+  <img src="work/figures/score_analysis.png" alt="Score distribution and top-100 quality check">
+  <figcaption>Figure 3: Left — RF score distribution across all test pages. Right — top-100 quality check showing the proportion of genuine candidates vs false positives in the model's highest-ranked pages.</figcaption>
+</div>
+
+<h3>Feature interpretation</h3>
+<p>CTR and average position were consistently the most important features across both built-in and permutation importance. This confirms the signal checks from ML-07: pages that rank well but attract few clicks contain the clearest signal for the review queue. Impressions_monthly acts as a gate — very low-volume pages score low regardless of CTR, matching the rule logic from the baseline. Sessions and days_with_impressions add consistency signal: a page with stable impressions across most days of the month is a more reliable candidate than one with a one-day spike.</p>
+
+<h3>Error patterns</h3>
+<p><strong>False positives</strong> (flagged but stable): most are pages with naturally low CTR for their content type — informational queries where users read the snippet without clicking. The model cannot distinguish "low CTR because the title is weak" from "low CTR because this query type never clicks." Human review is required before acting on any flag.</p>
+<p><strong>False negatives</strong> (declining pages ranked low): most are very low-impression pages. The model correctly deprioritizes them because a reviewer cannot take meaningful action on pages that almost no one sees. Some are pages in transition whose March signals are not yet representative of steady-state performance.</p>
+
+<h2>5. Limitations and Honest Framing</h2>
+
+<div class="callout">
+  <strong>Safe claim language throughout this paper:</strong> observed · measured · directional · associated with · decision-support. None of the claims in this paper assert causation or predict Google's ranking algorithm.
+</div>
+
+<ol>
+  <li><strong>Proxy label with soft overlap.</strong> The is_declining_label compares the first and second halves of March within the same month used to build features. A clean future-window label (features Jan–Feb, label Apr–May) would be more honest. This limitation was identified and named in ML-04 and carried transparently through all subsequent notebooks.</li>
+  <li><strong>Single month.</strong> All results are observed on March 2026 data. Performance on other months, other client mixes, or genuinely new clients has not been validated. Seasonal effects may make March unrepresentative of other periods.</li>
+  <li><strong>No causal claims.</strong> The model identifies pages associated with decline patterns. Whether a content update causes traffic to recover requires a controlled experiment. This model is a decision-support tool — it surfaces candidates for human review, not pages guaranteed to benefit from updates.</li>
+  <li><strong>SERP layout is invisible.</strong> Low CTR may result from featured snippets, People Also Ask boxes, or paid ads above the organic result. The model has no visibility into SERP layout — reviewers must check this manually before acting on a CTR flag.</li>
+  <li><strong>Intent type not adjusted.</strong> Informational pages naturally have lower CTR than transactional pages. The model applies the same signal thresholds to both. A stronger version would benchmark CTR within intent groups.</li>
+  <li><strong>Not production-ready.</strong> This is a research deliverable built on pseudonymized internship data. It is not connected to live data, does not update automatically, and has not been reviewed for production deployment.</li>
+</ol>
+
+<h2>6. Ranked Recommendations</h2>
+
+<p>The content action playbook (ML-10) translates model scores into human-readable actions. Every page in the scored output gets one archetype, one reason code, and one action label.</p>
+
+<table class="action-table">
+  <tr><th>Archetype</th><th>Reason code</th><th>Action</th><th>Confidence rule</th></tr>
+  <tr><td>page_one_low_ctr</td><td>high_visibility_ctr_gap</td><td>review_title_and_meta</td><td>HIGH if model prob ≥ 0.60</td></tr>
+  <tr><td>visible_low_ctr</td><td>low_ctr_visible_page</td><td>review_title_and_meta</td><td>HIGH if model prob ≥ 0.60</td></tr>
+  <tr><td>visible_low_engagement</td><td>engagement_gap</td><td>review_content_depth</td><td>MEDIUM</td></tr>
+  <tr><td>emerging_low_ctr</td><td>emerging_ctr_gap</td><td>monitor_and_flag</td><td>LOW — watch next month</td></tr>
+  <tr><td>inconsistent_visible</td><td>inconsistent_visibility</td><td>investigate_indexing</td><td>LOW — check crawl status</td></tr>
+  <tr><td>visible_performing</td><td>monitor</td><td>monitor</td><td>No action needed</td></tr>
+  <tr><td>low_visibility</td><td>no_action</td><td>no_action</td><td>Do not review</td></tr>
+</table>
+
+<h3>How a FlyRank editor uses this</h3>
+<ol>
+  <li>Open the ranked queue sorted by final_score descending</li>
+  <li>Take the top 20–50 rows matching weekly review capacity</li>
+  <li>For each flagged page: check SERP layout, check for sibling pages, check the CMS for recent edits</li>
+  <li>Apply editorial judgment — the queue says where to look, not what to decide</li>
+</ol>
+
+<h3>Human review required before any action</h3>
+<ul>
+  <li>Check SERP layout before acting on any CTR flag</li>
+  <li>Check for sibling pages before treating a page as declining</li>
+  <li>Check content age and recent CMS edits before escalating</li>
+  <li>Only escalate to urgent review if: impressions ≥ 500, days_with_impressions ≥ 15, model_score ≥ 0.50</li>
+</ul>
+
+<h3>What must not be automated</h3>
+<p>Title rewrites, content deletions, redirects, actions on pages below the minimum volume gate, and using this queue as a performance review tool for the content team.</p>
+
+<h2>7. Reproducibility</h2>
+
+<p>Everything needed to rerun this work from a fresh clone:</p>
+
+<pre style="background:#1E3A8A;color:#E2E8F0;padding:1.25rem;border-radius:8px;font-size:13px;overflow-x:auto;line-height:1.7">
+# 1. Clone the repo
+git clone https://github.com/MuhammadAli055/flyrank-ml-internship
+cd flyrank-ml-internship
+
+# 2. Install dependencies
+pip install duckdb huggingface_hub scikit-learn pandas numpy matplotlib
+
+# 3. Set Hugging Face token (required for gated dataset)
+# In Colab: add HF_TOKEN as a Secret in the key panel
+# Request access at: https://huggingface.co/datasets/FlyRank/internship-warehouse
+
+# 4. Run notebooks in order (Open in Colab via URL pattern):
+# w01_research_question.ipynb
+# w02_ml_task_framing.ipynb
+# w03_data_contract.ipynb
+# w04_baseline_score.ipynb
+# w05_model.ipynb
+# w06_validation_audit.ipynb
+# w07_action_playbook.ipynb
+# capstone.ipynb
+
+# Random seed: 42 (all train_test_split and model calls)
+# Development month: 2026-03
+# Validation: client-holdout, test_size=0.20, random_state=42
+</pre>
+
+<p style="margin-top:1rem">
+  <span class="pill">Python 3.10+</span>
+  <span class="pill">duckdb</span>
+  <span class="pill">scikit-learn</span>
+  <span class="pill">huggingface_hub</span>
+  <span class="pill">pandas</span>
+  <span class="pill">matplotlib</span>
+</p>
+
+<p style="margin-top:1rem">All metrics JSON files in <code>work/outputs/</code> are committed to the repo and serve as receipts — every number in this paper traces back to a JSON file generated by a specific notebook run. Figures in <code>work/figures/</code> are committed and embedded in this paper as relative paths.</p>
+
+<h2>Acknowledgments &amp; Data Credit</h2>
+
+<p>Built on the FlyRank ML Internship dataset — real search intelligence data generously made available for internship research through the Applied Search Intelligence track at <a href="https://flyrank.ai" target="_blank">FlyRank AI</a>. The warehouse release was pseudonymized, verified, and published on Hugging Face at <a href="https://huggingface.co/datasets/FlyRank/internship-warehouse" target="_blank">FlyRank/internship-warehouse</a>. Crediting the data source is standard research practice.</p>
+
+<p style="margin-top:1rem">This paper was produced as part of the FlyRank AI ML Internship (July–September 2026). All claims are observational. No causal claims are made without an experimental design. No client-identifying information appears anywhere in this paper or the associated repository.</p>
+
+</main>
+
+<div class="footer">
+  <p>Muhammad Ali · FlyRank AI ML Internship 2026 · Lane 2: Content Opportunity Scoring</p>
+  <p style="margin-top:0.5rem">
+    <a href="https://github.com/MuhammadAli055/flyrank-ml-internship">GitHub Repository</a> ·
+    <a href="https://flyrank.ai">FlyRank AI</a> ·
+    <a href="https://huggingface.co/datasets/FlyRank/internship-warehouse">Dataset on Hugging Face</a>
+  </p>
+</div>
+
+</body>
+</html>
