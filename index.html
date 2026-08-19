@@ -75,17 +75,17 @@ tr.best td:first-child{color:#1E3A8A;font-weight:700}
     <div class="metric-sub">March 2026 warehouse</div>
   </div>
   <div class="metric-card">
-    <div class="metric-val"><!-- FILL --></div>
+    <div class="metric-val">0.080 → 0.520</div>
     <div class="metric-label">RF Precision@50</div>
-    <div class="metric-sub">vs <!-- FILL --> baseline</div>
+    <div class="metric-sub">vs (6.5× improvement) baseline</div>
   </div>
   <div class="metric-card">
-    <div class="metric-val"><!-- FILL --></div>
+    <div class="metric-val">0.491 → 0.621</div>
     <div class="metric-label">ROC-AUC</div>
     <div class="metric-sub">Client-holdout test</div>
   </div>
   <div class="metric-card">
-    <div class="metric-val"><!-- FILL -->%</div>
+    <div class="metric-val">28.1%%</div>
     <div class="metric-label">Base rate</div>
     <div class="metric-sub">Declining pages</div>
   </div>
@@ -188,13 +188,13 @@ tr.best td:first-child{color:#1E3A8A;font-weight:700}
 
 <table>
   <tr><th>Method</th><th>Precision@20</th><th>Precision@50</th><th>ROC-AUC</th><th>Avg Precision</th></tr>
-  <tr><td>Baseline rule (ML-07)</td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td></tr>
-  <tr><td>Logistic Regression</td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td></tr>
-  <tr><td>Decision Tree</td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td></tr>
-  <tr class="best"><td>Random Forest ✓</td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td><td><!-- FILL --></td></tr>
+  <tr><td>Baseline rule (ML-07)</td><td>P@20=0.100</td><td>P@50=0.080</td><td>AUC=0.491</td><td>AP=0.245</td></tr>
+  <tr><td>Logistic Regression</td><td>P@20=0.100</td><td>P@50=0.160</td><td>AUC=0.484</td><td>AP=0.245</td></tr>
+  <tr><td>Decision Tree</td><td>P@20=0.600</td><td>P@50=0.540</td><td>AUC=0.601</td><td>AP=0.315</td></tr>
+  <tr class="best"><td>Random Forest ✓</td><td>P@20=0.450</td><td>P@50=0.520</td><td>AUC=0.621 </td><td>AP=0.328</td></tr>
 </table>
 
-<p><em>Base rate (majority class): <!-- FILL -->%. All Precision@K values should be read against this base rate, not against a naive 50% expectation. AUC and lift over baseline are the honest discrimination numbers.</em></p>
+<p><em>Base rate (majority class): 28.1%%. All Precision@K values should be read against this base rate, not against a naive 50% expectation. AUC and lift over baseline are the honest discrimination numbers.</em></p>
 
 <div class="figure">
   <img src="work/figures/feature_importance.png" alt="Permutation feature importance">
